@@ -55,17 +55,44 @@ void test_subtract_positive_and_negative_numbers(void)
 }
 void test_subtract_negative_numbers(void)
 {
-    TEST_ASSERT_EQUAL(-7, add(-3, -4));
+    TEST_ASSERT_EQUAL(1, subtract(-3, -4));
 }
 void test_subtract_zero(void)
 {
-    TEST_ASSERT_EQUAL(10, add(10, 0));
-    TEST_ASSERT_EQUAL(-10, add(0, 10));
+    TEST_ASSERT_EQUAL(10, subtract(10, 0));
+    TEST_ASSERT_EQUAL(-10, subtract(0, 10));
 }
 void test_subtract_overflow(void)
 {
     int result = subtract(INT_MIN, 1);
     TEST_ASSERT_TRUE(result > 1);
+}
+//==============================================================
+void test_multiply_positive_numbers(void)
+{
+    TEST_ASSERT_EQUAL(6, multiply(2, 3));
+}
+void test_multiply_positive_and_negative_numbers(void)
+{
+    TEST_ASSERT_EQUAL(-20, multiply(5, -4));
+}
+void test_multiply_negative_numbers(void)
+{
+    TEST_ASSERT_EQUAL(12, multiply(-3, -4));
+}
+void test_multiply_zero(void)
+{
+    TEST_ASSERT_EQUAL(0, multiply(10, 0));
+}
+void test_multiply_overflow(void)
+{
+    int result = multiply(INT_MAX, 2);
+    TEST_ASSERT_TRUE(result < 0);
+}
+void test_multiply_underflow(void)
+{
+    int result = multiply(INT_MIN, -1);
+    TEST_ASSERT_TRUE(result < 0);
 }
 //==============================================================
 
@@ -84,8 +111,17 @@ int main(void)
     RUN_TEST(test_subtract_positive_numbers);
     RUN_TEST(test_subtract_positive_and_negative_numbers);
     RUN_TEST(test_subtract_negative_numbers);
-    RUN_TEST(test_subtract_negative_numbers);
+    RUN_TEST(test_subtract_zero);
     RUN_TEST(test_subtract_overflow);
+
+    // Test multiplication
+    RUN_TEST(test_multiply_positive_numbers);
+    RUN_TEST(test_multiply_positive_and_negative_numbers);
+    RUN_TEST(test_multiply_negative_numbers);
+    RUN_TEST(test_multiply_zero);
+    RUN_TEST(test_multiply_overflow);
+    RUN_TEST(test_multiply_underflow);
+
 
     return UNITY_END();
 }
