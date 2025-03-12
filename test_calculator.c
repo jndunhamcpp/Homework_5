@@ -8,7 +8,6 @@ void setUp(void)
     // For example, you might reset a global value, dynamically allocate memory, etc.
     // In this example, we do not need anything here.
 }
-
 // Optional but needs to be defined(runs AFTER each test)
 void tearDown(void)
 {
@@ -16,12 +15,10 @@ void tearDown(void)
     // For example, free dynamically allocated memory, reset global values, etc.
     // In this example, we do not need anything here.
 }
-
 void test_add_positive_numbers(void)
 {
     TEST_ASSERT_EQUAL(5, add(2, 3)); // We expect 2 + 3 to be 5
 }
-
 int main(void)
 {
     UNITY_BEGIN();
